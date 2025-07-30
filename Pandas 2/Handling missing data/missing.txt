@@ -1,0 +1,6 @@
+Nan (Not a number)
+None(for object data types)
+
+isnull()
+True - Nan is missing
+False - value is present

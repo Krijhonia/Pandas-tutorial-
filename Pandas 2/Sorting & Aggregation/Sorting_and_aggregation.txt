@@ -1,0 +1,68 @@
+Sorting and Aggregation in Pandas
+=================================
+
+Sorting
+-------
+Sorting is used to arrange data in a DataFrame or Series in a particular order (ascending or descending). This is useful for organizing, analyzing, and visualizing data.
+
+Common sorting methods:
+- `sort_values()`: Sorts by the values of one or more columns.
+  Example:
+  ```python
+  df.sort_values('Salary', ascending=False)  # Sort by Salary descending
+  df.sort_values(['Age', 'Salary'])  # Sort by Age, then Salary
+  ```
+- `sort_index()`: Sorts by the index (row or column labels).
+  Example:
+  ```python
+  df.sort_index()  # Sort rows by index
+  df.sort_index(axis=1)  # Sort columns by column name
+  ```
+
+Options for sorting:
+- `ascending`: True (default) for ascending, False for descending
+- `inplace`: If True, modifies the original DataFrame
+- `na_position`: 'first' or 'last' for NaN placement
+
+Aggregation
+-----------
+Aggregation is the process of computing summary statistics from data, such as sum, mean, min, max, count, etc. It is often used after grouping data.
+
+Common aggregation methods:
+- `sum()`: Sum of values
+- `mean()`: Average of values
+- `min()`, `max()`: Minimum and maximum values
+- `count()`: Number of non-null values
+- `median()`: Median value
+- `std()`, `var()`: Standard deviation and variance
+- `agg()`: Apply one or more aggregation functions
+  Example:
+  ```python
+  df.agg({'Salary': ['mean', 'max'], 'Age': 'min'})
+  ```
+- `groupby()`: Group data and then aggregate
+  Example:
+  ```python
+  df.groupby('Department').mean()
+  df.groupby('City')['Salary'].sum()
+  ```
+- `pivot_table()`: Create a summary table with aggregation
+  Example:
+  ```python
+  df.pivot_table(values='Salary', index='Department', aggfunc='mean')
+  ```
+
+Advanced aggregation:
+- `transform()`: Returns an array with the same shape as the group, useful for adding group-level statistics back to the original DataFrame.
+- `filter()`: Filters groups based on a condition.
+- `value_counts()`: Counts unique values in a Series.
+- `nunique()`: Number of unique values.
+
+Key points:
+- Sorting helps in organizing and visualizing data.
+- Aggregation is essential for summarizing and analyzing large datasets.
+- Both can be combined for powerful data analysis (e.g., groupby + sort_values).
+
+For more details, see the pandas documentation:
+https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html

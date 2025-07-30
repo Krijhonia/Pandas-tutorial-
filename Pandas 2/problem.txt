@@ -1,0 +1,12 @@
+Why you need to Understand the data?
+
+1. You don't know how many rows and columns are there
+2. you don't know which type of data it is storing 
+3. You don't know where is the missing data
+
+
+Definition of indo() method
+1. You'll know how many rows and columns are there in data
+2. you'll know the column name
+3. You'll know the data types
+4. memory usage of the dataframe

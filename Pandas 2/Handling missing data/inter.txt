@@ -1,0 +1,51 @@
+Interpolation in Pandas
+-----------------------
+
+Interpolation is a technique used to estimate missing values in a dataset based on existing data points. In pandas, the `interpolate()` method is commonly used to fill missing (NaN) values in a DataFrame or Series.
+
+Why use interpolation?
+- To handle missing data in time series or numerical datasets.
+- To create smooth transitions between known data points.
+- To avoid dropping or filling missing values with static values like mean or zero.
+
+Common interpolation methods in pandas:
+- 'linear': Default method. Fills missing values using linear interpolation between known points.
+- 'time': Interpolates values according to time index.
+- 'index': Similar to 'linear', but uses the index values.
+- 'pad'/'ffill': Propagates last valid observation forward.
+- 'backfill'/'bfill': Uses next valid observation to fill gap.
+- 'polynomial': Fits a polynomial of a given order to the data.
+- 'spline': Uses spline interpolation.
+- 'nearest': Uses nearest valid observation.
+- 'zero', 'slinear', 'quadratic', 'cubic': Various order spline interpolations.
+
+Example usage:
+```python
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({'A': [1, np.nan, 3, 4, np.nan, 6]})
+# Linear interpolation (default)
+print(df['A'].interpolate(method='linear'))
+# Time interpolation (requires a datetime index)
+# df['A'].interpolate(method='time')
+# Index interpolation
+print(df['A'].interpolate(method='index'))
+# Polynomial interpolation (order=2)
+print(df['A'].interpolate(method='polynomial', order=2))
+# Spline interpolation (order=2)
+print(df['A'].interpolate(method='spline', order=2))
+# Nearest interpolation
+print(df['A'].interpolate(method='nearest'))
+# Forward fill
+print(df['A'].interpolate(method='pad'))
+# Backward fill
+print(df['A'].interpolate(method='backfill'))
+```
+
+Key points:
+- Interpolation is useful for filling gaps in data without introducing bias.
+- Choose the method that best fits your data and analysis needs.
+- Works for both Series and DataFrame objects.
+
+For more details, see the pandas documentation: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.interpolate.html

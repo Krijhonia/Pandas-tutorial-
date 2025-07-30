@@ -1,0 +1,89 @@
+1- Select specific column: Access one or more columns from a DataFrame to focus on relevant data for analysis. Example: df['column_name']
+2- Filter rows: Select rows that meet certain criteria to narrow down your dataset. Example: df[df['Age'] > 30]
+3- Combine multiple conditions: Filter data using more than one condition for precise selection. Example: df[(df['Age'] > 30) & (df['City'] == 'Delhi')]
+
+Methods used:
+1. Square brackets: Used to select columns or filter rows, e.g., df['column'] or df[condition].
+2. Boolean conditions: Logical expressions to create filters, e.g., df[df['Age'] > 30].
+
+Purpose:
+These steps are essential for extracting, viewing, and analyzing only the relevant parts of your data in pandas, making your workflow efficient and focused.
+
+# Methods Used in Pandas for Data Selection and Filtering
+
+1. Selecting Columns
+- **Single column (Series):**
+  ```python
+  column = df['ColumnName']
+  ```
+  Returns a pandas Series containing the data of one column.
+
+- **Multiple columns (DataFrame):**
+  ```python
+  subset = df[['Column1', 'Column2']]
+  ```
+  Returns a DataFrame with only the specified columns.
+
+2. Filtering Rows (Boolean Indexing)
+- **Single condition:**
+  ```python
+  filtered_rows = df[df['Salary'] > 50000]
+  ```
+  Returns rows where the 'Salary' column is greater than 50,000.
+
+- **Multiple conditions (using & for AND, | for OR):**
+  ```python
+  filtered_rows = df[(df['Salary'] > 50000) & (df['Age'] < 30)]
+  filtered_rows = df[(df['City'] == 'Delhi') | (df['City'] == 'Mumbai')]
+  ```
+  Combine conditions for more precise filtering.
+
+3. Using loc and iloc
+- **loc (label-based selection):**
+  ```python
+  df.loc[2, 'Name']
+  df.loc[:, ['Name', 'Salary']]
+  ```
+  Selects by row/column labels.
+
+- **iloc (integer position-based selection):**
+  ```python
+  df.iloc[0, 1]
+  df.iloc[:, [0, 2]]
+  ```
+  Selects by row/column integer positions.
+
+4. isin() for Filtering
+  ```python
+  df[df['City'].isin(['Delhi', 'Mumbai'])]
+  ```
+  Filters rows where 'City' is either 'Delhi' or 'Mumbai'.
+
+5. query() Method
+  ```python
+  df.query('Salary > 50000 and Age < 30')
+  ```
+  Allows SQL-like queries for filtering.
+
+6. head() and tail()
+  ```python
+  df.head(5)  # First 5 rows
+  df.tail(3)  # Last 3 rows
+  ```
+  Used to quickly view the top or bottom rows of a DataFrame.
+
+7. sample()
+  ```python
+  df.sample(3)
+  ```
+  Returns a random sample of rows.
+
+8. drop()
+  ```python
+  df.drop('ColumnName', axis=1)
+  df.drop([0, 2], axis=0)
+  ```
+  Removes columns or rows from the DataFrame.
+
+---
+These methods are essential for data selection, filtering, and exploration in pandas, making it easier to analyze and manipulate your data efficiently.
